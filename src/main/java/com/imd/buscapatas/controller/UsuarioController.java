@@ -19,22 +19,22 @@ public class UsuarioController {
 	@Autowired
 	UsuarioService usuarioService;
 	
-	@RequestMapping(value = "getallusuarios", method = RequestMethod.GET)
+	@RequestMapping(value = "users", method = RequestMethod.GET)
 	public List<Usuario> getAllUsuarios(){
 		return usuarioService.getAllUsuarios();
 	}
 	
-	@RequestMapping(value = "addusuario", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	@RequestMapping(value = "users", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	public String addUsuario(@RequestBody Usuario usuario) {
 		return usuarioService.addUsuario(usuario);
 	}
 	
-	@RequestMapping(value = "updateusuario", method = RequestMethod.PUT)
+	@RequestMapping(value = "users", method = RequestMethod.PUT)
 	public String updateUsuario(@RequestBody Usuario usuario) {
 		return usuarioService.addUsuario(usuario);
 	}
 	
-	@RequestMapping(value = "deleteusuario", method = RequestMethod.PUT)
+	@RequestMapping(value = "users", method = RequestMethod.DELETE)
 	public String removeUsuario(@RequestBody Usuario usuario) {
 		return usuarioService.removeUsuario(usuario);
 	}
