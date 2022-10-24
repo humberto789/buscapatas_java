@@ -3,11 +3,7 @@ package com.imd.buscapatas.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.imd.buscapatas.entity.Usuario;
 import com.imd.buscapatas.service.UsuarioService;
@@ -22,6 +18,17 @@ public class UsuarioController {
 	@RequestMapping(value = "getallusuarios", method = RequestMethod.GET)
 	public List<Usuario> getAllUsuarios(){
 		return usuarioService.getAllUsuarios();
+	}
+
+	@RequestMapping(value = "findbyemail", params = "email", method = RequestMethod.GET)
+	@ResponseBody
+	public List<Usuario> findByEmail(@RequestParam("email") String email){
+		return (List<Usuario>) usuarioService.findByEmail(email);
+	}
+
+	@RequestMapping(value = "findbyemailandsenha", method = RequestMethod.GET)
+	public List<Usuario> findByEmailAndSenha(@RequestBody Usuario usuario){
+		return (List<Usuario>) usuarioService.findByEmailAndSenha(usuario);
 	}
 	
 	@RequestMapping(value = "addusuario", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")

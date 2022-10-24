@@ -11,7 +11,7 @@ public class Usuario {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-	private String username;
+	private String nome;
 	private String email;
 	private String senha;
 	private String telefone;
@@ -28,12 +28,12 @@ public class Usuario {
 		this.id = id;
 	}
 
-	public String getUsername() {
-		return username;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setNome(String username) {
+		this.nome = username;
 	}
 
 	public String getEmail() {

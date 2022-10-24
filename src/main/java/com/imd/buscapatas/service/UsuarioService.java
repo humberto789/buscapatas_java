@@ -27,15 +27,37 @@ public class UsuarioService {
 	
 	public String addUsuario(Usuario usuario) {
 		try {
-			if (!usuarioRepository.existsByEmailAndSenha(usuario.getEmail(), usuario.getSenha())) {
+			if (!usuarioRepository.existsByEmail(usuario.getEmail())) {
 				usuarioRepository.save(usuario);
-				return "Usuario salvo com sucesso.";
+				return "Usuário salvo com sucesso.";
 			}else {
-				return "Esse usuario já existe.";
+				return "Já existe usuário cadastrado com esse e-mail.";
 			}
 		} catch (Exception e) {
 			throw e;
 		}
+	}
+
+	public List<Usuario> findByEmail(String email) {
+
+		try {
+			List<Usuario> usuario = usuarioRepository.findByEmail(email);
+			return usuario;
+		} catch (Exception e) {
+			throw e;
+		}
+
+	}
+
+	public Usuario findByEmailAndSenha(Usuario usuario) {
+
+		try {
+			Usuario user = usuarioRepository.findTop1ByEmailAndSenha(usuario.getEmail(), usuario.getSenha());
+			return user;
+		} catch (Exception e) {
+			throw e;
+		}
+
 	}
 	
 	public String removeUsuario(Usuario usuario) {
