@@ -26,9 +26,10 @@ public class UsuarioController {
 		return (List<Usuario>) usuarioService.findByEmail(email);
 	}
 
-	@RequestMapping(value = "findbyemailandsenha", method = RequestMethod.GET)
-	public List<Usuario> findByEmailAndSenha(@RequestBody Usuario usuario){
-		return (List<Usuario>) usuarioService.findByEmailAndSenha(usuario);
+	@RequestMapping(value = "usuarioautorizado", params = {"email","senha"}, method = RequestMethod.GET)
+	@ResponseBody
+	public List<Usuario> findByEmailAndSenha(@RequestParam String email, @RequestParam String senha){
+		return (List<Usuario>) usuarioService.findByEmailAndSenha(email, senha);
 	}
 	
 	@RequestMapping(value = "users", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")

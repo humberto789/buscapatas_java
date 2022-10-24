@@ -49,10 +49,10 @@ public class UsuarioService {
 
 	}
 
-	public Usuario findByEmailAndSenha(Usuario usuario) {
+	public List<Usuario> findByEmailAndSenha(String email, String senha) {
 
 		try {
-			Usuario user = usuarioRepository.findTop1ByEmailAndSenha(usuario.getEmail(), usuario.getSenha());
+			List<Usuario> user = usuarioRepository.findTop1ByEmailAndSenha(email, senha);
 			return user;
 		} catch (Exception e) {
 			throw e;

@@ -14,7 +14,7 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
 	public boolean existsByEmail(String email);
 
 	public List<Usuario> findByEmail(String email);
-	public Usuario findTop1ByEmailAndSenha(String email, String senha);
+	public List<Usuario> findTop1ByEmailAndSenha(String email, String senha);
 
 	public boolean existsById(int id);
 	
