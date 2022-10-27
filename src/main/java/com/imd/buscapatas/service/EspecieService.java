@@ -5,12 +5,16 @@ import org.springframework.stereotype.Service;
 
 import com.imd.buscapatas.entity.Especie;
 import com.imd.buscapatas.repository.EspecieRepository;
+import com.imd.buscapatas.repository.RacaRepository;
 
 @Service
 public class EspecieService {
 
 	@Autowired
 	EspecieRepository especieRepository;
+	
+	@Autowired
+	RacaRepository racaRepository;
 	
 	public String addEspecie(Especie especie) {
 		try {	
@@ -23,7 +27,7 @@ public class EspecieService {
 		}
 	}
 	
-	public String removeAnimal(Especie especie) {
+	public String removeEspecie(Especie especie) {
 		try {	
 			if(especieRepository.existsById(especie.getId())) {
 				especieRepository.delete(especie);
@@ -36,7 +40,7 @@ public class EspecieService {
 		}
 	}
 	
-	public String updateAnimal(Especie especie) {
+	public String updateEspecie(Especie especie) {
 		try {
 			if(especieRepository.existsById(especie.getId())) {
 				especieRepository.save(especie);

@@ -23,7 +23,10 @@ public class Post {
 	private double latitude;
 	private double longitude;
 	private String nomeAnimal;
-
+	
+	@ManyToOne
+	@JoinColumn(name = "usuario_id", referencedColumnName = "id")
+	private Usuario usuario;
 	@ManyToOne
 	@JoinColumn(name = "especie_id", referencedColumnName = "id")
 	private Especie especieAnimal;
@@ -154,5 +157,12 @@ public class Post {
 	public void setColeira(boolean coleira) {
 		this.coleira = coleira;
 	}
-	
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
 }
