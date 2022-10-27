@@ -2,15 +2,7 @@ package com.imd.buscapatas.entity;
 
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 
 import org.hibernate.annotations.Type;
 
@@ -31,13 +23,18 @@ public class Post {
 	private double latitude;
 	private double longitude;
 	private String nomeAnimal;
+
+	@ManyToOne
+	@JoinColumn(name = "especie_id", referencedColumnName = "id")
 	private Especie especieAnimal;
+	@ManyToOne
+	@JoinColumn(name = "raca_id", referencedColumnName = "id")
 	private Raca racaAnimal;
 	@Enumerated(EnumType.STRING)
 	private Sexo sexoAnimal;
 	@ManyToMany
-	@JoinTable(name="animal_has_cor", 
-		joinColumns= {@JoinColumn(name="animal_id")}, 
+	@JoinTable(name="post_has_cor",
+		joinColumns= {@JoinColumn(name="post_id")},
 		inverseJoinColumns= {@JoinColumn(name="cor_id")}
 	)
 	private List<Cor> coresAnimal;

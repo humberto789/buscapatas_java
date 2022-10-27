@@ -1,9 +1,7 @@
 package com.imd.buscapatas.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Raca {
@@ -12,7 +10,22 @@ public class Raca {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	public int id;
 	public String raca;
+
+	@ManyToOne
+	@JoinColumn(name = "especie_id", referencedColumnName = "id")
 	public Especie especie;
+	@OneToMany(mappedBy = "racaAnimal")
+	private List<Post> posts;
+
+	public List<Post> getPosts() {
+		return posts;
+	}
+
+	public void setPosts(List<Post> posts) {
+		this.posts = posts;
+	}
+
+
 	
 	public Raca() {
 		

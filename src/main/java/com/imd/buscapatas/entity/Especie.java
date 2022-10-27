@@ -1,9 +1,7 @@
 package com.imd.buscapatas.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Especie {
@@ -11,7 +9,12 @@ public class Especie {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-	private String especie;
+	private String descricaoespecie;
+	@OneToMany(mappedBy = "especieAnimal")
+	private List<Post> posts;
+
+	@OneToMany(mappedBy = "especie")
+	private List<Raca> racas;
 	
 	public Especie() {
 		
@@ -26,11 +29,19 @@ public class Especie {
 	}
 
 	public String getEspecie() {
-		return especie;
+		return descricaoespecie;
 	}
 
 	public void setEspecie(String especie) {
-		this.especie = especie;
+		this.descricaoespecie = especie;
+	}
+
+	public List<Post> getPosts() {
+		return posts;
+	}
+
+	public void setPosts(List<Post> posts) {
+		this.posts = posts;
 	}
 	
 	

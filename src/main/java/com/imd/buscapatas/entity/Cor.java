@@ -19,7 +19,7 @@ public class Cor {
 	@Column(unique=true)
 	private String cor;
 	
-	@ManyToMany(mappedBy="post")
+	@ManyToMany(mappedBy="coresAnimal")
 	private List<Post> posts;
 	
 	public Cor() {
