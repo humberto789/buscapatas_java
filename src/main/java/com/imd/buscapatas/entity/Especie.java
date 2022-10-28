@@ -9,7 +9,10 @@ public class Especie {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-	private String descricaoespecie;
+	
+	@Column(unique=true)
+	private String nome;
+	
 	@OneToMany(mappedBy = "especieAnimal")
 	private List<Post> posts;
 
@@ -28,20 +31,28 @@ public class Especie {
 		this.id = id;
 	}
 
-	public String getEspecie() {
-		return descricaoespecie;
-	}
-
-	public void setEspecie(String especie) {
-		this.descricaoespecie = especie;
-	}
-
 	public List<Post> getPosts() {
 		return posts;
 	}
 
 	public void setPosts(List<Post> posts) {
 		this.posts = posts;
+	}
+
+	public List<Raca> getRacas() {
+		return racas;
+	}
+
+	public void setRacas(List<Raca> racas) {
+		this.racas = racas;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 	
 	

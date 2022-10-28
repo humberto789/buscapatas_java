@@ -9,6 +9,8 @@ public class Raca {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	public int id;
+	
+	@Column(unique=true)
 	public String raca;
 
 	@ManyToOne

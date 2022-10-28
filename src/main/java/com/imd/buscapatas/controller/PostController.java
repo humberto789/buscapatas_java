@@ -23,7 +23,6 @@ public class PostController {
 	@RequestMapping(value = "post", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	public String addPost(@RequestBody Post post) {
 		
-		post.setUsuario(usuarioService.fin);
 		
 		return postService.addPost(post);
 	}

@@ -39,7 +39,7 @@ public class UsuarioController {
 	
 	@RequestMapping(value = "users", method = RequestMethod.PUT)
 	public String updateUsuario(@RequestBody Usuario usuario) {
-		return usuarioService.addUsuario(usuario);
+		return usuarioService.updateUsuario(usuario);
 	}
 	
 	@RequestMapping(value = "users", method = RequestMethod.DELETE)
