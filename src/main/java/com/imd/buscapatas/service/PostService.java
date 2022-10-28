@@ -1,5 +1,6 @@
 package com.imd.buscapatas.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,20 +15,36 @@ public class PostService {
 	
 	@Autowired
 	PostRepository postRepository;
-	
-	public List<Post> getAllPosts(){
+
+	public List<Post> findByCores(List<String> coresAnimal){
+		List<Integer> listacores = new ArrayList<>();
+
+		for(String s : coresAnimal) listacores.add(Integer.valueOf(s));
 
 		try {
-			List<Post> listaPosts = postRepository.findAll();
-			
-			return listaPosts;	
+			List<Post> listaPosts = postRepository.findDistinctByCoresAnimalIdIn(listacores);
+			return listaPosts;
+
 		}catch(Exception e) {
 			throw e;
 		}
 	}
-	
+
+
+	public List<Post> getAllPosts(){
+
+		try {
+			List<Post> listaPosts = postRepository.findAll();
+
+			return listaPosts;
+		}catch(Exception e) {
+			throw e;
+		}
+	}
+
 	public String addPost(Post post) {
 		try {	
+			
 			postRepository.save(post);
 			
 			return "Post salvo com sucesso.";

@@ -18,10 +18,7 @@ public class Cor {
 	
 	@Column(unique=true)
 	private String cor;
-	
-	@ManyToMany(mappedBy="coresAnimal")
-	private List<Post> posts;
-	
+
 	public Cor() {
 		
 	}
@@ -42,11 +39,4 @@ public class Cor {
 		this.cor = cor;
 	}
 
-	public List<Post> getPosts() {
-		return posts;
-	}
-
-	public void setPosts(List<Post> posts) {
-		this.posts = posts;
-	}
 }
