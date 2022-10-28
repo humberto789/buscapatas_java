@@ -1,9 +1,12 @@
 package com.imd.buscapatas.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.imd.buscapatas.entity.Post;
+import com.imd.buscapatas.entity.Usuario;
 import com.imd.buscapatas.repository.PostRepository;
 
 @Service
@@ -12,10 +15,19 @@ public class PostService {
 	@Autowired
 	PostRepository postRepository;
 	
+	public List<Post> getAllPosts(){
+
+		try {
+			List<Post> listaPosts = postRepository.findAll();
+			
+			return listaPosts;	
+		}catch(Exception e) {
+			throw e;
+		}
+	}
 	
 	public String addPost(Post post) {
 		try {	
-			
 			postRepository.save(post);
 			
 			return "Post salvo com sucesso.";
