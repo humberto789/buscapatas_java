@@ -13,7 +13,7 @@ public class RacaService {
 	
 	public String addRaca(Raca raca) {
 		try {	
-			if(racaRepository.existsByRaca(raca.getRaca())) {
+			if(racaRepository.existsByNome(raca.getNome())) {
 				
 				racaRepository.save(raca);
 				

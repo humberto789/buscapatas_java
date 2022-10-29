@@ -1,9 +1,11 @@
 package com.imd.buscapatas.entity;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.persistence.*;
 
+import com.sun.istack.NotNull;
 import org.hibernate.annotations.Type;
 
 @Entity
@@ -12,36 +14,50 @@ public class Post {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-	@Enumerated(EnumType.ORDINAL)
+
+	@Enumerated(EnumType.STRING)
 	private TipoPost tipoPost;
+
 	@Type(type="text")
 	private String outrasInformacoes;
+
 	@Type(type="text")
 	private String orientacoesGerais;
-	private double recompensa;
+
+	@Column(nullable = true)
+	private int recompensa;
+
+	@Column(nullable = true, columnDefinition = "bool default null")
 	private boolean larTemporario;
+
 	private double latitude;
 	private double longitude;
 	private String nomeAnimal;
+	private boolean coleira;
+
+	private LocalDateTime dataHora;
 	
 	@ManyToOne
 	@JoinColumn(name = "usuario_id", referencedColumnName = "id")
 	private Usuario usuario;
+
 	@ManyToOne
 	@JoinColumn(name = "especie_id", referencedColumnName = "id")
 	private Especie especieAnimal;
+
 	@ManyToOne
 	@JoinColumn(name = "raca_id", referencedColumnName = "id")
 	private Raca racaAnimal;
+
 	@Enumerated(EnumType.STRING)
 	private Sexo sexoAnimal;
+
 	@ManyToMany
 	@JoinTable(name="post_has_cor",
 		joinColumns= {@JoinColumn(name="post_id")},
 		inverseJoinColumns= {@JoinColumn(name="cor_id")}
 	)
 	private List<Cor> coresAnimal;
-	private boolean coleira;
 		
 	public Post() {
 	}
@@ -78,11 +94,11 @@ public class Post {
 		this.orientacoesGerais = orientacoesGerais;
 	}
 
-	public double getRecompensa() {
+	public int getRecompensa() {
 		return recompensa;
 	}
 
-	public void setRecompensa(double recompensa) {
+	public void setRecompensa(int recompensa) {
 		this.recompensa = recompensa;
 	}
 
@@ -164,5 +180,13 @@ public class Post {
 
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
+	}
+
+	public LocalDateTime getDataHora() {
+		return dataHora;
+	}
+
+	public void setDataHora(LocalDateTime dataHora) {
+		this.dataHora = dataHora;
 	}
 }

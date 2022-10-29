@@ -14,7 +14,7 @@ public class CorService {
 	
 	public String addCor(Cor cor) {
 		try {	
-			if(corRepository.existsByCor(cor.getCor())) {
+			if(corRepository.existsByNome(cor.getNome())) {
 				corRepository.save(cor);
 				
 				return "Cor salva com sucesso.";

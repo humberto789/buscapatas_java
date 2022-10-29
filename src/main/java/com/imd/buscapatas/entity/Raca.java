@@ -9,9 +9,8 @@ public class Raca {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	public int id;
-	
-	@Column(unique=true)
-	public String raca;
+
+	public String nome;
 
 	@ManyToOne
 	@JoinColumn(name = "especie_id", referencedColumnName = "id")
@@ -41,12 +40,12 @@ public class Raca {
 		this.id = id;
 	}
 
-	public String getRaca() {
-		return raca;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setRaca(String raca) {
-		this.raca = raca;
+	public void setNome(String raca) {
+		this.nome = raca;
 	}
 
 	public Especie getEspecie() {

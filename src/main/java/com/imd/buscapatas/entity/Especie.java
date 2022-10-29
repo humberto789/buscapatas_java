@@ -12,9 +12,6 @@ public class Especie {
 	
 	@Column(unique=true)
 	private String nome;
-	
-	@OneToMany(mappedBy = "especieAnimal")
-	private List<Post> posts;
 
 	@OneToMany(mappedBy = "especie")
 	private List<Raca> racas;
@@ -29,14 +26,6 @@ public class Especie {
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public List<Post> getPosts() {
-		return posts;
-	}
-
-	public void setPosts(List<Post> posts) {
-		this.posts = posts;
 	}
 
 	public List<Raca> getRacas() {

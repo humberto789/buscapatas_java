@@ -21,22 +21,22 @@ public class PostController {
 	@Autowired
 	PostService postService;
 
-	@RequestMapping(value = "post", method = RequestMethod.GET)
+	@RequestMapping(value = "posts", method = RequestMethod.GET)
 	public List<Post> getAllPosts(){
 		return postService.getAllPosts();
 	}
 	
-	@RequestMapping(value = "post", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-	public String addEspecie(@RequestBody Post post) {
+	@RequestMapping(value = "posts", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	public String addPost(@RequestBody Post post) {
 		return postService.addPost(post);
 	}
 	
-	@RequestMapping(value = "post", method = RequestMethod.PUT)
+	@RequestMapping(value = "posts", method = RequestMethod.PUT)
 	public String updateUsuario(@RequestBody Post post) {
 		return postService.updatePost(post);
 	}
 	
-	@RequestMapping(value = "post", method = RequestMethod.DELETE)
+	@RequestMapping(value = "posts", method = RequestMethod.DELETE)
 	public String removeUsuario(@RequestBody Post post) {
 		return postService.removePost(post);
 	}

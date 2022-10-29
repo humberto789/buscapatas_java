@@ -10,6 +10,6 @@ public interface CorRepository extends JpaRepository<Cor, Integer>{
 
 	public boolean existsById(int id);
 	
-	public boolean existsByCor(String cor);
+	public boolean existsByNome(String cor);
 	
 }

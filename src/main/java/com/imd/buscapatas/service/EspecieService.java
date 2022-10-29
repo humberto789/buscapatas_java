@@ -27,11 +27,11 @@ public class EspecieService {
 				
 				if(especie.getRacas() != null) {
 					for(Raca raca : especie.getRacas()) {
-						if(!racaRepository.existsByRaca(raca.getRaca())) {
+						if(!racaRepository.existsByNome(raca.getNome())) {
 							raca.setEspecie(especie);
 							racaRepository.save(raca);
 						}
-						raca = racaRepository.findTop1ByRaca(raca.getRaca()).get(0);
+						raca = racaRepository.findTop1ByNome(raca.getNome()).get(0);
 					}
 				}
 				
@@ -68,11 +68,11 @@ public class EspecieService {
 				
 				if(especie.getRacas() != null) {
 					for(Raca raca : especie.getRacas()) {
-						if(!racaRepository.existsByRaca(raca.getRaca())) {
+						if(!racaRepository.existsByNome(raca.getNome())) {
 							raca.setEspecie(especie);
 							racaRepository.save(raca);
 						}
-						raca = racaRepository.findTop1ByRaca(raca.getRaca()).get(0);
+						raca = racaRepository.findTop1ByNome(raca.getNome()).get(0);
 					}
 				}
 				

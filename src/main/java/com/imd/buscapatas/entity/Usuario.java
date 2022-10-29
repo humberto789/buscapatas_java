@@ -1,9 +1,9 @@
 package com.imd.buscapatas.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.sun.istack.NotNull;
+
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Usuario {
@@ -15,8 +15,10 @@ public class Usuario {
 	private String email;
 	private String senha;
 	private String telefone;
-	
-	
+
+	@OneToMany(mappedBy = "usuario")
+	private List<Post> posts;
+
 	public Usuario() {	
 	}
 

@@ -12,8 +12,8 @@ public interface RacaRepository extends JpaRepository<Raca, Integer>{
 	
 	public boolean existsById(int id);
 	
-	public boolean existsByRaca(String raca);
+	public boolean existsByNome(String raca);
 	
-	public List<Raca> findTop1ByRaca(String raca);
+	public List<Raca> findTop1ByNome(String raca);
 
 }

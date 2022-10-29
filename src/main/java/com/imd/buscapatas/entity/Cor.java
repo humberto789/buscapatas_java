@@ -1,13 +1,10 @@
 package com.imd.buscapatas.entity;
 
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 
 @Entity
 public class Cor {
@@ -17,7 +14,7 @@ public class Cor {
 	private int id;
 	
 	@Column(unique=true)
-	private String cor;
+	private String nome;
 
 	public Cor() {
 		
@@ -31,12 +28,12 @@ public class Cor {
 		this.id = id;
 	}
 
-	public String getCor() {
-		return cor;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setCor(String cor) {
-		this.cor = cor;
+	public void setNome(String cor) {
+		this.nome = cor;
 	}
 
 }
