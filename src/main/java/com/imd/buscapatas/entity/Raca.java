@@ -1,5 +1,7 @@
 package com.imd.buscapatas.entity;
 
+import com.fasterxml.jackson.annotation.*;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -15,19 +17,7 @@ public class Raca {
 	@ManyToOne
 	@JoinColumn(name = "especie_id", referencedColumnName = "id")
 	public Especie especie;
-	@OneToMany(mappedBy = "racaAnimal")
-	private List<Post> posts;
 
-	public List<Post> getPosts() {
-		return posts;
-	}
-
-	public void setPosts(List<Post> posts) {
-		this.posts = posts;
-	}
-
-
-	
 	public Raca() {
 		
 	}

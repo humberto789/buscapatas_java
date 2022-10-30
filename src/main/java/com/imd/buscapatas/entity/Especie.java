@@ -1,5 +1,10 @@
 package com.imd.buscapatas.entity;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -13,9 +18,6 @@ public class Especie {
 	@Column(unique=true)
 	private String nome;
 
-	@OneToMany(mappedBy = "especie")
-	private List<Raca> racas;
-	
 	public Especie() {
 		
 	}
@@ -26,14 +28,6 @@ public class Especie {
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public List<Raca> getRacas() {
-		return racas;
-	}
-
-	public void setRacas(List<Raca> racas) {
-		this.racas = racas;
 	}
 
 	public String getNome() {

@@ -16,4 +16,6 @@ public interface RacaRepository extends JpaRepository<Raca, Integer>{
 	
 	public List<Raca> findTop1ByNome(String raca);
 
+	public List<Raca> findByEspecieId(int especie_id);
+
 }
