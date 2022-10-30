@@ -41,7 +41,7 @@ public class RacaService {
 
 			racaRepository.save(raca);
 
-			return "Raca salva com sucesso.";
+			return "Raça salva com sucesso.";
 
 		} catch (Exception e) {
 			throw e;
@@ -52,9 +52,9 @@ public class RacaService {
 		try {	
 			if(racaRepository.existsById(raca.getId())) {
 				racaRepository.delete(raca);
-				return "Raca removida com sucesso.";
+				return "Raça removida com sucesso.";
 			}else {
-				return "Essa raca não existe";
+				return "Essa raça não existe";
 			}
 		} catch (Exception e) {
 			throw e;
@@ -65,9 +65,9 @@ public class RacaService {
 		try {
 			if(racaRepository.existsById(raca.getId())) {
 				racaRepository.save(raca);
-				return "Raca atualizada com sucesso.";
+				return "Raça atualizada com sucesso.";
 			}else {
-				return "Essa raca não existe";
+				return "Essa raça não existe";
 			}
 		} catch (Exception e){
 			throw e;

@@ -35,7 +35,7 @@ public class Post {
 	private String nomeAnimal;
 	private boolean coleira;
 
-	private LocalDateTime dataHora;
+	private LocalDateTime dataHora = LocalDateTime.now();
 	
 	@ManyToOne
 	@JoinColumn(name = "usuario_id", referencedColumnName = "id")
@@ -70,17 +70,13 @@ public class Post {
 		this.id = id;
 	}
 
-	public TipoPost getTipoPost() {
-		return tipoPost;
-	}
+	public TipoPost getTipoPost() { return tipoPost; }
 
 	public void setTipoPost(TipoPost tipoPost) {
 		this.tipoPost = tipoPost;
 	}
 
-	public String getOutrasInformacoes() {
-		return outrasInformacoes;
-	}
+	public String getOutrasInformacoes() { return outrasInformacoes; }
 
 	public void setOutrasInformacoes(String outrasInformacoes) {
 		this.outrasInformacoes = outrasInformacoes;

@@ -57,7 +57,7 @@ public class PostService {
 		try {	
 			if(postRepository.existsById(post.getId())) {
 				postRepository.delete(post);
-				return "Post removida com sucesso.";
+				return "Post removido com sucesso.";
 			}else {
 				return "Esse post não existe";
 			}
