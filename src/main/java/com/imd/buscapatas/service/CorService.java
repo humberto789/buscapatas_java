@@ -6,12 +6,25 @@ import org.springframework.stereotype.Service;
 import com.imd.buscapatas.entity.Cor;
 import com.imd.buscapatas.repository.CorRepository;
 
+import java.util.List;
+
 @Service
 public class CorService {
 
 	@Autowired
 	CorRepository corRepository;
-	
+
+	public List<Cor> getAllCores(){
+
+		try {
+			List<Cor> listaCores = corRepository.findAll();
+
+			return listaCores;
+		}catch(Exception e) {
+			throw e;
+		}
+	}
+
 	public String addCor(Cor cor) {
 		try {	
 			if(corRepository.existsByNome(cor.getNome())) {
