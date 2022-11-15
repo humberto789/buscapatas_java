@@ -25,22 +25,21 @@ public class EspecieController {
 		return especieService.getAllEspecies();
 	}
 	
-	//ADD e UPDATE com problema, porque usar raça dentro de espécie gera loop
-	/*
+	
 	@RequestMapping(value = "especies", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	public String addEspecie(@RequestBody Especie especie) {
 		return especieService.addEspecie(especie);
 	}
 	
 	@RequestMapping(value = "especies", method = RequestMethod.PUT)
-	public String updateUsuario(@RequestBody Especie especie) {
+	public String updateEspecie(@RequestBody Especie especie) {
 		return especieService.updateEspecie(especie);
 	}
 
-	 */
+
 	
 	@RequestMapping(value = "especies", method = RequestMethod.DELETE)
-	public String removeUsuario(@RequestBody Especie especie) {
+	public String removeEspecie(@RequestBody Especie especie) {
 		return especieService.removeEspecie(especie);
 	}
 }

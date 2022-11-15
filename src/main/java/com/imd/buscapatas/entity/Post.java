@@ -70,7 +70,9 @@ public class Post {
 		this.id = id;
 	}
 
-	public TipoPost getTipoPost() { return tipoPost; }
+	public TipoPost getTipoPost() { 
+		return tipoPost;
+	}
 
 	public void setTipoPost(TipoPost tipoPost) {
 		this.tipoPost = tipoPost;

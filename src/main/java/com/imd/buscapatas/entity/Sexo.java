@@ -2,8 +2,8 @@ package com.imd.buscapatas.entity;
 
 public enum Sexo {
 
-	M("M"),
-	F("F");
+	M("Macho"),
+	F("Femea");
 	
 	private String label;
 	

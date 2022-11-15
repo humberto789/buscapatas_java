@@ -37,8 +37,6 @@ public class EspecieService {
 				
 				especieRepository.save(especie);
 				
-				especie.setId(especieRepository.findByNome(especie.getNome()).getId());
-				
 				return "Especie salva com sucesso.";
 			}else {
 				return "Essa especie já existe no sistema";
