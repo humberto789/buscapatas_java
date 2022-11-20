@@ -3,6 +3,7 @@ package com.imd.buscapatas.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.imd.buscapatas.entity.TipoPost;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -35,6 +36,39 @@ public class PostService {
 
 		try {
 			List<Post> listaPosts = postRepository.findAll();
+
+			return listaPosts;
+		}catch(Exception e) {
+			throw e;
+		}
+	}
+
+	public List<Post> getPostsByUsuario(int usuario_id){
+
+		try {
+			List<Post> listaPosts = postRepository.findByUsuarioId(usuario_id);
+
+			return listaPosts;
+		}catch(Exception e) {
+			throw e;
+		}
+	}
+
+	public List<Post> getPostsPerdidos(){
+
+		try {
+			List<Post> listaPosts = postRepository.findByTipoPost(TipoPost.ANIMAL_PERDIDO);
+
+			return listaPosts;
+		}catch(Exception e) {
+			throw e;
+		}
+	}
+
+	public List<Post> getPostsAvistados(){
+
+		try {
+			List<Post> listaPosts = postRepository.findByTipoPost(TipoPost.ANIMAL_AVISTADO);
 
 			return listaPosts;
 		}catch(Exception e) {

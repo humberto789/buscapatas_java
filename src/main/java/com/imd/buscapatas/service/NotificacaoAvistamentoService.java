@@ -25,11 +25,22 @@ public class NotificacaoAvistamentoService {
 			throw e;
 		}
 	}
-	
-	public List<NotificacaoAvistamento> findByPostId(Post post){
+
+	public List<NotificacaoAvistamento> getNotificacoesByUsuario(int id_usuario){
 
 		try {
-			List<NotificacaoAvistamento> listaNotificacaoAvistamento = notificacaoAvistamentoRepository.findByPostId(post.getId());
+			List<NotificacaoAvistamento> listaNotificacaoAvistamento = notificacaoAvistamentoRepository.findByUsuarioId(id_usuario);
+
+			return listaNotificacaoAvistamento;
+		}catch(Exception e) {
+			throw e;
+		}
+	}
+
+	public List<NotificacaoAvistamento> getNotificacoesByPost(int id_post){
+
+		try {
+			List<NotificacaoAvistamento> listaNotificacaoAvistamento = notificacaoAvistamentoRepository.findByPostId(id_post);
 
 			return listaNotificacaoAvistamento;
 		}catch(Exception e) {

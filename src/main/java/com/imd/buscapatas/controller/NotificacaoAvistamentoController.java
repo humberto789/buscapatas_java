@@ -3,12 +3,7 @@ package com.imd.buscapatas.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.imd.buscapatas.entity.NotificacaoAvistamento;
 import com.imd.buscapatas.service.NotificacaoAvistamentoService;
@@ -20,22 +15,32 @@ public class NotificacaoAvistamentoController {
 	@Autowired
 	NotificacaoAvistamentoService notificacaoAvistamentoService;
 	
-	@RequestMapping(value = "notifications", method = RequestMethod.GET)
+	@RequestMapping(value = "notificacoes", method = RequestMethod.GET)
 	public List<NotificacaoAvistamento> getAllNotificacaoAvistamento(){
 		return notificacaoAvistamentoService.getAllNotificacaoAvistamento();
 	}
+
+	@RequestMapping(value = "notificacoes/usuario/{id}", method = RequestMethod.GET)
+	public List<NotificacaoAvistamento> getNotificacoesByUsuario(@PathVariable int id){
+		return notificacaoAvistamentoService.getNotificacoesByUsuario(id);
+	}
+
+	@RequestMapping(value = "notificacoes/post/{id}", method = RequestMethod.GET)
+	public List<NotificacaoAvistamento> getNotificacoesByPost(@PathVariable int id){
+		return notificacaoAvistamentoService.getNotificacoesByPost(id);
+	}
 	
-	@RequestMapping(value = "notifications", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	@RequestMapping(value = "notificacoes", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	public String addNotificacaoAvistamento(@RequestBody NotificacaoAvistamento notificacaoAvistamento) {
 		return notificacaoAvistamentoService.addNotificacaoAvistamento(notificacaoAvistamento);
 	}
 	
-	@RequestMapping(value = "notifications", method = RequestMethod.PUT)
+	@RequestMapping(value = "notificacoes", method = RequestMethod.PUT)
 	public String updateNotificacaoAvistamento(@RequestBody NotificacaoAvistamento notificacaoAvistamento) {
 		return notificacaoAvistamentoService.updateNotificacaoAvistamento(notificacaoAvistamento);
 	}
 	
-	@RequestMapping(value = "notifications", method = RequestMethod.DELETE)
+	@RequestMapping(value = "notificacoes", method = RequestMethod.DELETE)
 	public String removeNotificacaoAvistamento(@RequestBody NotificacaoAvistamento notificacaoAvistamento) {
 		return notificacaoAvistamentoService.removeNotificacaoAvistamento(notificacaoAvistamento);
 	}

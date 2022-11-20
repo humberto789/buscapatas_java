@@ -2,6 +2,7 @@ package com.imd.buscapatas.repository;
 
 import java.util.List;
 
+import com.imd.buscapatas.entity.TipoPost;
 import com.imd.buscapatas.entity.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -15,5 +16,6 @@ public interface PostRepository extends JpaRepository<Post, Integer>{
 
 	public List<Post> findDistinctByCoresAnimalIdIn(List<Integer> coresAnimal);
 
+	public List<Post> findByTipoPost(TipoPost tipoPost);
 
 }

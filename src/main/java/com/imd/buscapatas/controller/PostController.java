@@ -25,6 +25,21 @@ public class PostController {
 	public List<Post> getAllPosts(){
 		return postService.getAllPosts();
 	}
+
+	@RequestMapping(value = "posts/usuario/{id}", method = RequestMethod.GET)
+	public List<Post> getPostsByUsuario(@PathVariable int id){
+		return postService.getPostsByUsuario(id);
+	}
+
+	@RequestMapping(value = "posts/perdidos", method = RequestMethod.GET)
+	public List<Post> getPostsPerdidos(){
+		return postService.getPostsPerdidos();
+	}
+
+	@RequestMapping(value = "posts/avistados", method = RequestMethod.GET)
+	public List<Post> getPostsAvistados(){
+		return postService.getPostsAvistados();
+	}
 	
 	@RequestMapping(value = "posts", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	public String addPost(@RequestBody Post post) {
