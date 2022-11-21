@@ -53,6 +53,18 @@ public class PostService {
 			throw e;
 		}
 	}
+	public Post getPostById(int id){
+
+		try {
+			Post post = postRepository.findById(id);
+
+			return post;
+		}catch(Exception e) {
+			throw e;
+		}
+	}
+
+
 
 	public List<Post> getPostsPerdidos(){
 
