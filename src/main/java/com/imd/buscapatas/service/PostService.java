@@ -46,7 +46,7 @@ public class PostService {
 	public List<Post> getPostsByUsuario(int usuario_id){
 
 		try {
-			List<Post> listaPosts = postRepository.findByUsuarioId(usuario_id);
+			List<Post> listaPosts = postRepository.findByUsuarioIdOrderByTipoPostDescDataHoraDesc(usuario_id);
 
 			return listaPosts;
 		}catch(Exception e) {
