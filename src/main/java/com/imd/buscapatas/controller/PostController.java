@@ -52,13 +52,13 @@ public class PostController {
 	}
 	
 	@RequestMapping(value = "posts", method = RequestMethod.PUT)
-	public String updateUsuario(@RequestBody Post post) {
+	public String updatePost(@RequestBody Post post) {
 		return postService.updatePost(post);
 	}
 	
-	@RequestMapping(value = "posts", method = RequestMethod.DELETE)
-	public String removeUsuario(@RequestBody Post post) {
-		return postService.removePost(post);
+	@RequestMapping(value = "posts/{id}", method = RequestMethod.DELETE)
+	public String removePost(@PathVariable int id) {
+		return postService.removePost(id);
 	}
 
 	@RequestMapping(value = "findbycores", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")

@@ -16,7 +16,7 @@ public class Usuario {
 	private String senha;
 	private String telefone;
 
-	@OneToMany(mappedBy = "usuario")
+	@OneToMany(mappedBy = "usuario", orphanRemoval = true)
 	private List<Post> posts;
 
 	public Usuario() {	

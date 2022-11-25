@@ -99,10 +99,10 @@ public class PostService {
 		}
 	}
 	
-	public String removePost(Post post) {
+	public String removePost(int id) {
 		try {	
-			if(postRepository.existsById(post.getId())) {
-				postRepository.delete(post);
+			if(postRepository.existsById(id)) {
+				postRepository.deleteById(id);
 				return "Post removido com sucesso.";
 			}else {
 				return "Esse post não existe";

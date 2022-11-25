@@ -14,6 +14,7 @@ public interface PostRepository extends JpaRepository<Post, Integer>{
 	
 	public List<Post> findByUsuarioId(int usuarioId);
 	public Post findById(int id);
+	List<Post> deleteById(int id);
 
 	public List<Post> findDistinctByCoresAnimalIdIn(List<Integer> coresAnimal);
 

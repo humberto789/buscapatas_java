@@ -36,6 +36,9 @@ public class Post {
 	private boolean coleira;
 
 	private LocalDateTime dataHora = LocalDateTime.now();
+
+	@OneToMany(mappedBy = "post", orphanRemoval = true)
+	private List<NotificacaoAvistamento> notificacoes;
 	
 	@ManyToOne
 	@JoinColumn(name = "usuario_id", referencedColumnName = "id")
@@ -55,7 +58,7 @@ public class Post {
 	@ManyToMany
 	@JoinTable(name="post_has_cor",
 		joinColumns= {@JoinColumn(name="post_id")},
-		inverseJoinColumns= {@JoinColumn(name="cor_id")}
+		inverseJoinColumns= {@JoinColumn(name="cor_id") }
 	)
 	private List<Cor> coresAnimal;
 		
