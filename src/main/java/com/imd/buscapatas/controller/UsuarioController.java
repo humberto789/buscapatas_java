@@ -25,12 +25,11 @@ public class UsuarioController {
 
 	@Autowired
 	UsuarioService usuarioService;
-	
-	@RequestMapping(value = "users", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
+
 	@Autowired
 	S3Util s3Util;
 
-	@RequestMapping(value = "users", method = RequestMethod.GET)
+	@RequestMapping(value = "users", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
 	public List<Usuario> getAllUsuarios(){
 		return usuarioService.getAllUsuarios();
 	}
