@@ -12,9 +12,11 @@ public class Usuario {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	private String nome;
+	@Column(unique = true)
 	private String email;
 	private String senha;
 	private String telefone;
+	private String caminhoImagem;
 
 	@OneToMany(mappedBy = "usuario", orphanRemoval = true)
 	private List<Post> posts;
@@ -61,6 +63,13 @@ public class Usuario {
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
-	
+
+	public String getCaminhoImagem() {
+		return caminhoImagem;
+	}
+
+	public void setCaminhoImagem(String caminhoImagem) {
+		this.caminhoImagem = caminhoImagem;
+	}
 	
 }
