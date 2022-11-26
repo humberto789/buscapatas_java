@@ -16,7 +16,7 @@ public class CorController {
 	@Autowired
 	CorService corService;
 
-	@RequestMapping(value = "cores", method = RequestMethod.GET)
+	@RequestMapping(value = "cores", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
 	public List<Cor> getAllCores(){
 		return corService.getAllCores();
 	}

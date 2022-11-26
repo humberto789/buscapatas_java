@@ -21,27 +21,27 @@ public class PostController {
 	@Autowired
 	PostService postService;
 
-	@RequestMapping(value = "posts", method = RequestMethod.GET)
+	@RequestMapping(value = "posts", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
 	public List<Post> getAllPosts(){
 		return postService.getAllPosts();
 	}
 
-	@RequestMapping(value = "posts/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "posts/{id}", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
 	public Post getPostById(@PathVariable int id){
 		return postService.getPostById(id);
 	}
 
-	@RequestMapping(value = "posts/usuario/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "posts/usuario/{id}", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
 	public List<Post> getPostsByUsuario(@PathVariable int id){
 		return postService.getPostsByUsuario(id);
 	}
 
-	@RequestMapping(value = "posts/perdidos", method = RequestMethod.GET)
+	@RequestMapping(value = "posts/perdidos", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
 	public List<Post> getPostsPerdidos(){
 		return postService.getPostsPerdidos();
 	}
 
-	@RequestMapping(value = "posts/avistados", method = RequestMethod.GET)
+	@RequestMapping(value = "posts/avistados", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
 	public List<Post> getPostsAvistados(){
 		return postService.getPostsAvistados();
 	}

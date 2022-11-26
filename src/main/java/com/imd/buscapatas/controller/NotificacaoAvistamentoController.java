@@ -15,17 +15,17 @@ public class NotificacaoAvistamentoController {
 	@Autowired
 	NotificacaoAvistamentoService notificacaoAvistamentoService;
 	
-	@RequestMapping(value = "notificacoes", method = RequestMethod.GET)
+	@RequestMapping(value = "notificacoes", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
 	public List<NotificacaoAvistamento> getAllNotificacaoAvistamento(){
 		return notificacaoAvistamentoService.getAllNotificacaoAvistamento();
 	}
 
-	@RequestMapping(value = "notificacoes/usuario/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "notificacoes/usuario/{id}", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
 	public List<NotificacaoAvistamento> getNotificacoesByUsuario(@PathVariable int id){
 		return notificacaoAvistamentoService.getNotificacoesByUsuario(id);
 	}
 
-	@RequestMapping(value = "notificacoes/post/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "notificacoes/post/{id}", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
 	public List<NotificacaoAvistamento> getNotificacoesByPost(@PathVariable int id){
 		return notificacaoAvistamentoService.getNotificacoesByPost(id);
 	}

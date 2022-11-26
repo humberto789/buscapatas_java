@@ -15,18 +15,18 @@ public class UsuarioController {
 	@Autowired
 	UsuarioService usuarioService;
 	
-	@RequestMapping(value = "users", method = RequestMethod.GET)
+	@RequestMapping(value = "users", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
 	public List<Usuario> getAllUsuarios(){
 		return usuarioService.getAllUsuarios();
 	}
 
-	@RequestMapping(value = "findbyemail", params = "email", method = RequestMethod.GET)
+	@RequestMapping(value = "findbyemail", params = "email", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public List<Usuario> findByEmail(@RequestParam("email") String email){
 		return (List<Usuario>) usuarioService.findByEmail(email);
 	}
 
-	@RequestMapping(value = "usuarioautorizado", params = {"email","senha"}, method = RequestMethod.GET)
+	@RequestMapping(value = "usuarioautorizado", params = {"email","senha"}, method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public List<Usuario> findByEmailAndSenha(@RequestParam String email, @RequestParam String senha){
 		return (List<Usuario>) usuarioService.findByEmailAndSenha(email, senha);

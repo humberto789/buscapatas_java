@@ -20,7 +20,7 @@ public class EspecieController {
 	@Autowired
 	EspecieService especieService;
 
-	@RequestMapping(value = "especies", method = RequestMethod.GET)
+	@RequestMapping(value = "especies", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
 	public List<Especie> getAllEspecies(){
 		return especieService.getAllEspecies();
 	}

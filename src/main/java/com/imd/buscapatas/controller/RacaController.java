@@ -25,12 +25,12 @@ public class RacaController {
 		return racaService.updateRaca(raca);
 	}
 
-	@RequestMapping(value = "racas", method = RequestMethod.GET)
+	@RequestMapping(value = "racas", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
 	public List<Raca> getAllRacas(){
 		return racaService.getAllRacas();
 	}
 	
-	@RequestMapping(value = "racas/especie/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "racas/especie/{id}", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
 	public List<Raca> getRacasByEspecie(@PathVariable int id){
 		return racaService.getRacasByEspecie(id);
 	}
