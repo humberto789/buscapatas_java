@@ -18,6 +18,8 @@ import java.util.List;
 @CrossOrigin(origins = "*")
 public class PostController {
 	
+	private static String caminhoImagens = "C:/Users/Humberto789/Documents/imagens_buscapata/";
+	
 	@Autowired
 	PostService postService;
 
