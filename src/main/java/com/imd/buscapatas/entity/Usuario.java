@@ -5,7 +5,8 @@ import com.sun.istack.NotNull;
 import javax.persistence.*;
 import java.util.List;
 
-@Entity
+@Entity(name = "usuario")
+@Table(name = "usuario")
 public class Usuario {
 	
 	@Id

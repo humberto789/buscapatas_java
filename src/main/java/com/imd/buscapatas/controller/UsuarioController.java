@@ -47,17 +47,17 @@ public class UsuarioController {
 	}
 	
 	@RequestMapping(value = "users", method = RequestMethod.POST)
-	public String addUsuario(@RequestParam("jsondata") String jsonData, @RequestParam("file") MultipartFile arquivo ) {
+	public String addUsuario(@RequestParam("jsondata") String jsonData, @RequestParam(value = "file", required = false) MultipartFile arquivo ) {
 
 		try{
 
 			Usuario usuario = objectMapper.readValue(jsonData, Usuario.class);
 
-			if(!arquivo.isEmpty()) {
+			if(arquivo != null) {
 				usuario.setCaminhoImagem("usuario-foto-" + String.valueOf(usuario.getEmail()) + arquivo.getOriginalFilename());
 				s3Util.saveFile(arquivo, usuario.getCaminhoImagem());
 			}else {
-				usuario.setCaminhoImagem("usuariofoto-padrao.png");
+				usuario.setCaminhoImagem("usuario-foto-padrao.png");
 			}
 
 
@@ -72,8 +72,19 @@ public class UsuarioController {
 	}
 	
 	@RequestMapping(value = "users", method = RequestMethod.PUT)
-	public String updateUsuario(@RequestBody Usuario usuario) {
-		return usuarioService.updateUsuario(usuario);
+	public String updateUsuario(@RequestParam("jsondata") String jsonData, @RequestParam(value = "file", required = false) MultipartFile arquivo) {
+		try{
+			Usuario usuario = objectMapper.readValue(jsonData, Usuario.class);
+			if(arquivo != null) {
+				usuario.setCaminhoImagem("usuario-foto-" + String.valueOf(usuario.getEmail()) + arquivo.getOriginalFilename());
+				s3Util.saveFile(arquivo, usuario.getCaminhoImagem());
+			}
+			return usuarioService.updateUsuario(usuario);
+		}catch(IOException e) {
+			e.printStackTrace();
+		}
+		return "Houve algum erro";
+		
 	}
 	
 	@RequestMapping(value = "users", method = RequestMethod.DELETE)

@@ -76,7 +76,7 @@ public class UsuarioService {
 	public String updateUsuario(Usuario usuario) {
 		try {
 			if(usuarioRepository.existsById(usuario.getId())) {
-				usuarioRepository.save(usuario);
+				usuarioRepository.updateAtributes(usuario.getId(), usuario.getNome(), usuario.getEmail(), usuario.getSenha(), usuario.getTelefone(), usuario.getCaminhoImagem());
 				return "Usuario atualizado com sucesso.";
 			}else {
 				return "Esse usuario não existe.";
