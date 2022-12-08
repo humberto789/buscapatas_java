@@ -115,7 +115,9 @@ public class PostService {
 	public String updatePost(Post post) {
 		try {
 			if(postRepository.existsById(post.getId())) {
+				
 				postRepository.save(post);
+				
 				return "Post atualizado com sucesso.";
 			}else {
 				return "Esse post não existe";
@@ -124,4 +126,20 @@ public class PostService {
 			throw e;
 		}
 	}
+	
+	public String updateCaminhoImagemPost(Post post) {
+		try {
+			if(postRepository.existsById(post.getId())) {
+				
+				postRepository.updateCaminhoImagem(post.getId(), post.getCaminhoImagem());
+				
+				return "Post atualizado com sucesso.";
+			}else {
+				return "Esse post não existe";
+			}
+		} catch (Exception e){
+			throw e;
+		}
+	}
+	
 }

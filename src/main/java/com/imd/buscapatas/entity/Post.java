@@ -5,10 +5,12 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.sun.istack.NotNull;
 import org.hibernate.annotations.Type;
 
-@Entity
+@Entity(name = "post")
+@Table(name = "post")
 public class Post {
 	
 	@Id
@@ -34,10 +36,12 @@ public class Post {
 	private double longitude;
 	private String nomeAnimal;
 	private boolean coleira;
+	private String caminhoImagem;
 
 	private LocalDateTime dataHora = LocalDateTime.now();
 
 	@OneToMany(mappedBy = "post", orphanRemoval = true)
+	@JsonManagedReference
 	private List<NotificacaoAvistamento> notificacoes;
 	
 	@ManyToOne
@@ -189,5 +193,21 @@ public class Post {
 
 	public void setDataHora(LocalDateTime dataHora) {
 		this.dataHora = dataHora;
+	}
+
+	public String getCaminhoImagem() {
+		return caminhoImagem;
+	}
+
+	public void setCaminhoImagem(String caminhoImagem) {
+		this.caminhoImagem = caminhoImagem;
+	}
+
+	public List<NotificacaoAvistamento> getNotificacoes() {
+		return notificacoes;
+	}
+
+	public void setNotificacoes(List<NotificacaoAvistamento> notificacoes) {
+		this.notificacoes = notificacoes;
 	}
 }

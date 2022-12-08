@@ -84,4 +84,19 @@ public class NotificacaoAvistamentoService {
 			throw e;
 		}
 	}
+	
+	public String updateCaminhoImagemNotificacaoAvistamento(NotificacaoAvistamento notificacaoAvistamento) {
+		try {
+			if(notificacaoAvistamentoRepository.existsById(notificacaoAvistamento.getId())) {
+				
+				notificacaoAvistamentoRepository.updateCaminhoImagem(notificacaoAvistamento.getId(), notificacaoAvistamento.getCaminhoImagem());
+				
+				return "Notificação de avistamento atualizado com sucesso.";
+			}else {
+				return "Essa notificação de avistamento não existe";
+			}
+		} catch (Exception e){
+			throw e;
+		}
+	}
 }

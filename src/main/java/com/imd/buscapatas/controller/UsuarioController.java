@@ -13,21 +13,19 @@ import org.springframework.web.multipart.MultipartFile;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.imd.buscapatas.entity.Usuario;
 import com.imd.buscapatas.service.UsuarioService;
-import com.imd.buscapatas.util.S3Util;
+import com.imd.buscapatas.util.AzureConfig;
 
 @RestController
 @CrossOrigin(origins = "*")
 public class UsuarioController {
 	
-	private static String caminhoImagens = "https://buscapatas.s3.sa-east-1.amazonaws.com/";
-
 	ObjectMapper objectMapper = new ObjectMapper();
 
 	@Autowired
 	UsuarioService usuarioService;
-
+	
 	@Autowired
-	S3Util s3Util;
+	AzureConfig azure;
 
 	@RequestMapping(value = "users", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
 	public List<Usuario> getAllUsuarios(){
@@ -55,12 +53,12 @@ public class UsuarioController {
 
 			if(arquivo != null) {
 				usuario.setCaminhoImagem("usuario-foto-" + String.valueOf(usuario.getEmail()) + arquivo.getOriginalFilename());
-				s3Util.saveFile(arquivo, usuario.getCaminhoImagem());
+				azure.enviarArquivo(arquivo, usuario.getCaminhoImagem());
 			}else {
 				usuario.setCaminhoImagem("usuario-foto-padrao.png");
 			}
 
-
+			
 			return usuarioService.addUsuario(usuario);
 		}catch(IOException e) {
 			e.printStackTrace();
@@ -77,7 +75,7 @@ public class UsuarioController {
 			Usuario usuario = objectMapper.readValue(jsonData, Usuario.class);
 			if(arquivo != null) {
 				usuario.setCaminhoImagem("usuario-foto-" + String.valueOf(usuario.getEmail()) + arquivo.getOriginalFilename());
-				s3Util.saveFile(arquivo, usuario.getCaminhoImagem());
+				azure.enviarArquivo(arquivo, usuario.getCaminhoImagem());
 			}
 			return usuarioService.updateUsuario(usuario);
 		}catch(IOException e) {

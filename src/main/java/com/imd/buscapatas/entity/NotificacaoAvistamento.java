@@ -8,8 +8,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
-@Entity
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+@Entity(name = "notificacao_avistamento")
+@Table(name = "notificacao_avistamento")
 public class NotificacaoAvistamento {
 	
 	@Id
@@ -22,6 +26,7 @@ public class NotificacaoAvistamento {
 	
 	@ManyToOne
 	@JoinColumn(name = "post_id", referencedColumnName = "id")
+	@JsonBackReference
 	private Post post;
 	
 	private String mensagem;
@@ -31,6 +36,8 @@ public class NotificacaoAvistamento {
 	private double latitude;
 	
 	private double longitude;
+	
+	private String caminhoImagem;
 	
 	public NotificacaoAvistamento() {
 		
@@ -92,6 +99,13 @@ public class NotificacaoAvistamento {
 
 	public void setLongitude(double longitude) {
 		this.longitude = longitude;
-	}	
+	}
 
+	public String getCaminhoImagem() {
+		return caminhoImagem;
+	}
+
+	public void setCaminhoImagem(String caminhoImagem) {
+		this.caminhoImagem = caminhoImagem;
+	}
 }

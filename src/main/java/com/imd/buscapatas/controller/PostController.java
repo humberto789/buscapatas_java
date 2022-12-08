@@ -1,24 +1,25 @@
 package com.imd.buscapatas.controller;
 
+import java.io.IOException;
 import java.util.List;
 
-import com.imd.buscapatas.entity.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
-import com.imd.buscapatas.entity.Especie;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.imd.buscapatas.entity.Post;
-import com.imd.buscapatas.entity.Usuario;
 import com.imd.buscapatas.service.PostService;
-import com.imd.buscapatas.service.UsuarioService;
-
-import java.util.List;
+import com.imd.buscapatas.util.AzureConfig;
 
 @RestController
 @CrossOrigin(origins = "*")
 public class PostController {
 	
-	private static String caminhoImagens = "C:/Users/Humberto789/Documents/imagens_buscapata/";
+	ObjectMapper objectMapper = new ObjectMapper();
+	
+	@Autowired
+	AzureConfig azure;
 	
 	@Autowired
 	PostService postService;
@@ -48,14 +49,51 @@ public class PostController {
 		return postService.getPostsAvistados();
 	}
 	
-	@RequestMapping(value = "posts", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-	public String addPost(@RequestBody Post post) {
-		return postService.addPost(post);
+	@RequestMapping(value = "posts", method = RequestMethod.POST)
+	public String addPost(@RequestParam("jsondata") String jsonData, @RequestParam(value = "file", required = false) MultipartFile arquivo) {
+		
+		try{
+
+			Post post = objectMapper.readValue(jsonData, Post.class);
+			
+			String resultado = postService.addPost(post);
+			
+			if(arquivo != null) {
+				post.setCaminhoImagem("post-foto-" + String.valueOf(post.getId()) + arquivo.getOriginalFilename());
+				azure.enviarArquivo(arquivo, post.getCaminhoImagem());
+			}else {
+				post.setCaminhoImagem("post-foto-padrao.png");
+			}
+			
+			postService.updateCaminhoImagemPost(post);
+			
+			return resultado;
+		}catch(IOException e) {
+			e.printStackTrace();
+		}
+
+		return "Houve algum erro";
 	}
 	
 	@RequestMapping(value = "posts", method = RequestMethod.PUT)
-	public String updatePost(@RequestBody Post post) {
-		return postService.updatePost(post);
+	public String updatePost(@RequestParam("jsondata") String jsonData, @RequestParam(value = "file", required = false) MultipartFile arquivo) {
+		try{
+
+			Post post = objectMapper.readValue(jsonData, Post.class);
+			
+			if(arquivo != null) {
+				post.setCaminhoImagem("post-foto-" + String.valueOf(post.getId()) + arquivo.getOriginalFilename());
+				azure.enviarArquivo(arquivo, post.getCaminhoImagem());
+			}else {
+				post.setCaminhoImagem("post-foto-padrao.png");
+			}
+		
+			return postService.updatePost(post);
+		}catch(IOException e) {
+			e.printStackTrace();
+		}
+
+		return "Houve algum erro";
 	}
 	
 	@RequestMapping(value = "posts/{id}", method = RequestMethod.DELETE)
